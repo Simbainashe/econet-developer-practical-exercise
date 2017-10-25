@@ -7,7 +7,6 @@ package com.econetmedia.developer.interview.service;
 
 import com.econetmedia.developer.interview.exception.ValidationException;
 import com.econetmedia.developer.interview.model.Customer;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -41,8 +40,7 @@ public class CustomerServiceImpl implements CustomerService{
     public List<Customer> filterByGradeOrSalary(String grade, Number salary, List<Customer> customerInputList) {
     
         List<Customer> result = customerInputList.stream()
-                .filter(customer -> customer.getGrade().equals(grade))
-                .filter(customer -> customer.getSalary()==salary)
+                .filter(customer -> customer.getGrade().equals(grade) || customer.getSalary().equals(salary))
                 .collect(Collectors.toList());
         return  result;
     
